@@ -9,7 +9,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "init-db": "ts-node --project tsconfig.backend.json backend/scripts/initDB.ts"
+    "init-db": "ts-node --project tsconfig.backend.json backend/scripts/initDB.ts",
+    "export-static": "mkdir out && xcopy .next\\static out\\static /E /I && xcopy .next\\server\\pages out /E /I",
+    "predeploy": "npm run build && npm run export-static",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "cloudinary": "^1.40.0",
@@ -38,6 +41,7 @@
     "@types/sanitize-html": "^2.9.0",
     "autoprefixer": "^10.4.13",
     "concurrently": "^8.2.0",
+    "gh-pages": "^6.0.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.0",
     "ts-node": "^10.9.1",
