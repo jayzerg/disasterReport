@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "next lint",
     "init-db": "ts-node --project tsconfig.backend.json backend/scripts/initDB.ts",
-    "export-static": "mkdir out && xcopy .next\\static out\\static /E /I && xcopy .next\\server\\pages out /E /I",
+    "export-static": "if exist out rmdir /s /q out && mkdir out && xcopy .next\\static out\\static /E /I && xcopy .next\\server\\pages out /E /I",
     "predeploy": "npm run build && npm run export-static",
     "deploy": "gh-pages -d out"
   },
